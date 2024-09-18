@@ -45,9 +45,10 @@ model_path = os.path.join(os.path.dirname(__file__), "vaccine_demand_model.pkl")
 model = joblib.load(model_path)
 
 def predict_demand(region, month, population, prev_demand):
-    X = np.array([[month, region, population, prev_demand]])
-    prediction = model.predict(X)
-    return int(np.round(prediction[0]))
+    # X = np.array([[month, region, population, prev_demand]])
+    # prediction = model.predict(X)
+    # return int(np.round(prediction[0]))
+    return "hello"
 
 
 # Home route to render the HTML page
