@@ -42,12 +42,12 @@ async def home(request: Request):
     return {"message": msg}
 
 # Prediction route to accept JSON request body
-@app.post("/predict")
-async def predict(request: PredictionRequest):
-    #Extract the data from the request model
-    prediction = predict_demand(request.region, request.month, request.population, request.prev_demand)
+# @app.post("/predict")
+# async def predict(request: PredictionRequest):
+#     #Extract the data from the request model
+#     prediction = predict_demand(request.region, request.month, request.population, request.prev_demand)
  
-    return {"predicted_demand": prediction}
+#     return {"predicted_demand": prediction}
    
 
 # @app.get("/synthetic_vaccine_data", response_model=List[DataPoint])
