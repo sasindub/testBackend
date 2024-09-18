@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from model.predict_model import predict_demand
+#from model.predict_model import predict_demand
 #import pandas as pd
 #from typing import List
 
@@ -33,6 +33,21 @@ app.add_middleware(
 # class DataPoint(BaseModel):
 #     label: str
 #     value: float
+
+import os
+import joblib
+import numpy as np
+
+# Resolve the absolute path of the .pkl file
+model_path = os.path.join(os.path.dirname(__file__), "vaccine_demand_model.pkl")
+
+# Load the trained model
+model = joblib.load(model_path)
+
+def predict_demand(region, month, population, prev_demand):
+    X = np.array([[month, region, population, prev_demand]])
+    prediction = model.predict(X)
+    return int(np.round(prediction[0]))
 
 
 # Home route to render the HTML page
