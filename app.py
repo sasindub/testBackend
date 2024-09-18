@@ -38,7 +38,6 @@ class DataPoint(BaseModel):
 # Home route to render the HTML page
 @app.get("/")
 async def home(request: Request):
-    msg = test()
     return {"message": "hellop"}
 
 # Prediction route to accept JSON request body
