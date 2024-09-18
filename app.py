@@ -1,10 +1,10 @@
 from fastapi import FastAPI, Request
-# from fastapi.responses import HTMLResponse
-# from fastapi.middleware.cors import CORSMiddleware
-# from pydantic import BaseModel
-# from model.predict_model import predict_demand
-# import pandas as pd
-# from typing import List
+from fastapi.responses import HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from model.predict_model import predict_demand
+import pandas as pd
+from typing import List
 
 app = FastAPI()
 
