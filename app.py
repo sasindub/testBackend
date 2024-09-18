@@ -8,18 +8,18 @@ from typing import List
 
 app = FastAPI()
 
-# origins = [
-#     "https://whfgrx3r-8000.asse.devtunnels.ms",  # Frontend origin 
-#     "http://localhost:8000",  
-# ]
+origins = [
+    "https://whfgrx3r-8000.asse.devtunnels.ms",  # Frontend origin 
+    "http://localhost:8000",  
+]
 
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=["*"],  
-#     allow_credentials=True,
-#     allow_methods=["*"],  
-#     allow_headers=["*"], 
-# )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"], 
+)
 
 
 # # model for the request
