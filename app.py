@@ -2,9 +2,9 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-#from model.predict_model import predict_demand
-#import pandas as pd
-#from typing import List
+from model.predict_model import predict_demand
+import pandas as pd
+from typing import List
 
 app = FastAPI()
 
@@ -22,47 +22,31 @@ app.add_middleware(
 )
 
 
-# # model for the request
-# class PredictionRequest(BaseModel):
-#     region: int
-#     month: int
-#     population: int
-#     prev_demand: int = None
+# model for the request
+class PredictionRequest(BaseModel):
+    region: int
+    month: int
+    population: int
+    prev_demand: int = None
 
-# # model for the response
-# class DataPoint(BaseModel):
-#     label: str
-#     value: float
-
-import os
-import joblib
-import numpy as np
-
-# Resolve the absolute path of the .pkl file
-model_path = os.path.join(os.path.dirname(__file__), "vaccine_demand_model.pkl")
-
-# Load the trained model
-#model = joblib.load(model_path)
-
-def predict_demand(region, month, population, prev_demand):
-    # X = np.array([[month, region, population, prev_demand]])
-    # prediction = model.predict(X)
-    # return int(np.round(prediction[0]))
-    return "hello"
+# model for the response
+class DataPoint(BaseModel):
+    label: str
+    value: float
 
 
 # Home route to render the HTML page
 @app.get("/")
-async def home():
+async def home(request: Request):
     return {"message": "yes"}
 
-# # Prediction route to accept JSON request body
-# @app.post("/predict")
-# async def predict(request: PredictionRequest):
-#     #Extract the data from the request model
-#     prediction = predict_demand(request.region, request.month, request.population, request.prev_demand)
+# Prediction route to accept JSON request body
+@app.post("/predict")
+async def predict(request: PredictionRequest):
+    #Extract the data from the request model
+    prediction = predict_demand(request.region, request.month, request.population, request.prev_demand)
  
-#     return {"predicted_demand": prediction}
+    return {"predicted_demand": prediction}
    
 
 # @app.get("/synthetic_vaccine_data", response_model=List[DataPoint])
