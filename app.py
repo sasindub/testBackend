@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from model.predict_model import predict_demand, test
+from model.predict_model import predict_demand
 import pandas as pd
 from typing import List
 
@@ -39,7 +39,7 @@ class DataPoint(BaseModel):
 @app.get("/")
 async def home(request: Request):
     msg = test()
-    return {"message": msg}
+    return {"message": "hellop"}
 
 # Prediction route to accept JSON request body
 @app.post("/predict")
