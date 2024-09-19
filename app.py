@@ -7,15 +7,19 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 import pandas as pd
+import sys
 
 # Initialize FastAPI app
 app = FastAPI()
 
 # Configure logging
 logging.basicConfig(
-    filename='app.log',  # Log to a file
-    level=logging.ERROR,  # Log only errors and above
-    format='%(asctime)s %(levelname)s:%(message)s'
+    level=logging.INFO,  # Set the desired logging level
+    format='%(asctime)s %(levelname)s:%(message)s',
+    handlers=[
+        logging.FileHandler("app.log"),  # Log to a file
+        logging.StreamHandler(sys.stdout)  # Log to console (for Azure)
+    ]
 )
 
 # CORS settings
@@ -50,7 +54,7 @@ model_path = os.path.join(BASE_DIR, "vaccine_demand_model.pkl")
 
 # Load the trained model with error handling
 try:
-    model = joblib.load(model_path)
+    #model = joblib.load(model_path)
     logging.info("Model loaded successfully.")  # Use logging instead of app.logger
 except Exception as e:
     logging.error(f"Error loading the model: {str(e)}")
