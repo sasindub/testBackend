@@ -12,7 +12,7 @@ model = pickle.load(open("/tmp/8dcd9c3dc14c1d7/model/vaccine_demand_model.pkl", 
 def predict_demand(region, month, population, prev_demand):
     X = np.array([[month, region, population, prev_demand]])
     prediction = model.predict(X)
-    return int(np.round(prediction[0]))
+    int(np.round(prediction[0]))
     return model_path
 
 # def test():
