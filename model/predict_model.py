@@ -7,15 +7,12 @@ import pickle
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(BASE_DIR, "vaccine_demand_model.pkl")
 # Load the trained model
-model = pickle.load(open(model_path, "rb"))
+#model = pickle.load(open(model_path, "rb"))
 
 def predict_demand():
- # Create a sample object
-    data = {"key1": "value1", "key2": 42}
-
-    # Save the object to a new .pkl file
-    with open("new_model.pkl", "wb") as f:
-        pickle.dump(data, f)
+    # X = np.array([[month, region, population, prev_demand]])
+    # prediction = model.predict(X)
+    # return int(np.round(prediction[0]))
     return model_path
 
 # def test():
