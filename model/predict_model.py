@@ -6,7 +6,7 @@ import numpy as np
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(BASE_DIR, "vaccine_demand_model.pkl")
 # Load the trained model
-#model = pickle.load(open(model_path, "rb"))
+model = pickle.load(open(model_path, "rb"))
 
 def predict_demand():
     # X = np.array([[month, region, population, prev_demand]])
