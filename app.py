@@ -58,7 +58,7 @@ def predict_demand():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     model_path = os.path.join(BASE_DIR, "new_model.pkl")
     # Load the trained model
-    #model = pickle.load(open(model_path, "rb"))
+    model = pickle.load(open("/tmp/8dcd9c0505710e8/new_model.pkl", "rb"))
     return model_path
 
 # Home route to render the HTML page
