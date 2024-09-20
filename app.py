@@ -50,7 +50,8 @@ model_path = os.path.join(BASE_DIR, "vaccine_demand_model.pkl")
 
 # Load the trained model with error handling
 try:
-    model = joblib.load(model_path)
+    model=None
+    #model = joblib.load(model_path)
     logging.info("Model loaded successfully.")  # Use logging instead of app.logger
 except Exception as e:
     logging.error(f"Error loading the model: {str(e)}")
