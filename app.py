@@ -34,10 +34,16 @@ class DataPoint(BaseModel):
     label: str
     value: float
 
-
+import pickle
 # Home route to render the HTML page
 @app.get("/")
-async def home(request: Request):
+async def home(request: Request):   
+    # Create a sample object
+    data = {"key1": "value1", "key2": 42}
+
+    # Save the object to a new .pkl file
+    with open("new_model.pkl", "wb") as f:
+        pickle.dump(data, f)
     return {"message": predict_demand()}
 
 # Prediction route to accept JSON request body
