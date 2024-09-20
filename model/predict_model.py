@@ -10,9 +10,9 @@ model_path = os.path.join(BASE_DIR, "vaccine_demand_model.pkl")
 model = pickle.load(open("/tmp/8dcd9c3dc14c1d7/model/vaccine_demand_model.pkl", "rb"))
 
 def predict_demand():
-    # X = np.array([[month, region, population, prev_demand]])
-    # prediction = model.predict(X)
-    # return int(np.round(prediction[0]))
+    X = np.array([[month, region, population, prev_demand]])
+    prediction = model.predict(X)
+    return int(np.round(prediction[0]))
     return model_path
 
 # def test():
