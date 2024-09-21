@@ -63,4 +63,3 @@ async def get_synthetic_vaccine_data():
         ))
 
     return data
-
